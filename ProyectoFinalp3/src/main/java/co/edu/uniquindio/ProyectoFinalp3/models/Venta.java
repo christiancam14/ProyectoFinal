@@ -2,6 +2,10 @@ package co.edu.uniquindio.ProyectoFinalp3.models;
 
 import java.time.LocalDateTime;
 
+import co.edu.uniquindio.ProyectoFinalp3.exceptions.EstadoVentaInvalidoException;
+import co.edu.uniquindio.ProyectoFinalp3.exceptions.ProductoSinUnidadesDisponiblesException;
+import co.edu.uniquindio.ProyectoFinalp3.exceptions.VentaNoValidaException;
+
 public class Venta {
 
     // Atributos
@@ -17,9 +21,9 @@ public class Venta {
         this.producto = producto;
         this.cantidad = cantidad;
         this.vendedor = vendedor;
-        this.fechaVenta = LocalDateTime.now();  // Fecha de la venta
-        this.precioTotal = calcularPrecioTotal();  
-        this.estadoVenta = EstadoVenta.PENDIENTE;  
+        this.fechaVenta = LocalDateTime.now(); // Fecha de la venta
+        this.precioTotal = calcularPrecioTotal();
+        this.estadoVenta = EstadoVenta.PENDIENTE;
     }
 
     // Método para calcular el precio total de la venta
@@ -38,7 +42,7 @@ public class Venta {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
-        this.precioTotal = calcularPrecioTotal();  
+        this.precioTotal = calcularPrecioTotal();
     }
 
     public int getCantidad() {
@@ -47,7 +51,7 @@ public class Venta {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-        this.precioTotal = calcularPrecioTotal();  
+        this.precioTotal = calcularPrecioTotal();
     }
 
     public LocalDateTime getFechaVenta() {
@@ -76,7 +80,8 @@ public class Venta {
 
     public void venderProducto(Producto producto, int cantidad) throws ProductoSinUnidadesDisponiblesException {
         if (producto.getUnidadesDisponibles() < cantidad) {
-            throw new ProductoSinUnidadesDisponiblesException("No hay suficientes unidades disponibles para el producto: " + producto.getNombre());
+            throw new ProductoSinUnidadesDisponiblesException(
+                    "No hay suficientes unidades disponibles para el producto: " + producto.getNombre());
         }
     }
 
@@ -85,14 +90,13 @@ public class Venta {
             throw new VentaNoValidaException("Venta no válida: stock insuficiente.");
         }
     }
+
     public void cambiarEstadoVenta(EstadoVenta nuevoEstado) throws EstadoVentaInvalidoException {
         if (nuevoEstado == null) {
             throw new EstadoVentaInvalidoException("El estado de venta es inválido.");
         }
         this.estadoVenta = nuevoEstado;
     }
-    
-    
 
     // Método para generar estadísticas de la venta
     public String generarEstadisticas() {
@@ -104,7 +108,7 @@ public class Venta {
         estadisticas.append("Fecha de la Venta: ").append(fechaVenta).append("\n");
         estadisticas.append("Vendedor: ").append(vendedor.getNombre()).append("\n");
         estadisticas.append("Estado de la Venta: ").append(estadoVenta).append("\n");
-        
+
         return estadisticas.toString();
     }
 }

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class MarketPlace{
+import co.edu.uniquindio.ProyectoFinalp3.exceptions.VendedorNoExistenteException;
+
+public class MarketPlace {
     private String nombre;
     private List<Vendedor> vendedores;
 
@@ -13,7 +15,8 @@ public class MarketPlace{
         this.vendedores = new ArrayList<>();
     }
 
-    public void registrar(String nombre, String contrasena, String ciudad, String telefono, String direccion, String correoElectronico) {
+    public void registrar(String nombre, String contrasena, String ciudad, String telefono, String direccion,
+            String correoElectronico) {
         Vendedor nuevoVendedor = new Vendedor(nombre, telefono, contrasena, correoElectronico, ciudad, direccion, null);
         vendedores.add(nuevoVendedor);
         System.out.println("Vendedor registrado exitosamente: " + nombre);
@@ -43,19 +46,15 @@ public class MarketPlace{
         return vendedor;
     }
 
-    
-
-    // Método para sugerir un vendedor 
+    // Método para sugerir un vendedor
     public void sugerirVendedor() {
         if (!vendedores.isEmpty()) {
-            Vendedor vendedorSugerido = vendedores.get(0); 
+            Vendedor vendedorSugerido = vendedores.get(0);
             System.out.println("Sugerencia de vendedor: " + vendedorSugerido.getNombre());
         } else {
             System.out.println("No hay vendedores registrados para sugerir.");
         }
     }
-
-
 
     // Getters y setters
     public String getNombre() {
