@@ -2,7 +2,7 @@ package co.edu.uniquindio.ProyectoFinalp3.services;
 
 import co.edu.uniquindio.ProyectoFinalp3.models.Producto;
 import co.edu.uniquindio.ProyectoFinalp3.models.Vendedor;
-import co.edu.uniquindio.ProyectoFinalp3.Repository.VendedorRepository;
+import co.edu.uniquindio.ProyectoFinalp3.repository.VendedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
