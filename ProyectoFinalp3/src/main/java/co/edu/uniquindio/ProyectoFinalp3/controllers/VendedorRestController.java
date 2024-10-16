@@ -2,7 +2,8 @@ package co.edu.uniquindio.ProyectoFinalp3.controllers;
 
 import co.edu.uniquindio.ProyectoFinalp3.models.Producto;
 import co.edu.uniquindio.ProyectoFinalp3.models.Vendedor;
-import co.edu.uniquindio.ProyectoFinalp3.services.VendedorService;
+import co.edu.uniquindio.ProyectoFinalp3.services.VendedorServices;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ import java.util.List;
 public class VendedorRestController {
 
     @Autowired
-    private VendedorService vendedorService;
+    private VendedorServices vendedorService;
 
     // Publicar un producto
     @PostMapping("/{id}/producto")

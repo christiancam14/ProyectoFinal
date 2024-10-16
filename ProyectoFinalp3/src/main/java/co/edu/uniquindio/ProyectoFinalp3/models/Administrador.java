@@ -2,6 +2,8 @@ package co.edu.uniquindio.ProyectoFinalp3.models;
 
 import java.util.List;
 
+import co.edu.uniquindio.ProyectoFinalp3.exceptions.IdAdministradorInvalidoException;
+
 public class Administrador {
     private String nombre;
     private String telefono;

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class VendedorService {
+public class VendedorServices {
 
     @Autowired
     private VendedorRepository vendedorRepository;
@@ -75,5 +75,4 @@ public class VendedorService {
         return vendedorOptional.map(Vendedor::obtenerTop10ProductosMasVendidos).orElse(null);
     }
 }
-
 

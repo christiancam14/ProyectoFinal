@@ -1,29 +1,60 @@
 package co.edu.uniquindio.ProyectoFinalp3.models;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Comparator;
 import java.util.stream.Collectors;
+import jakarta.persistence.*;
+import java.io.Serializable;
 
-import co.edu.uniquindio.ProyectoFinalp3.exceptions.MinimoProductosRequeridosException;
-import co.edu.uniquindio.ProyectoFinalp3.exceptions.ProductoYaVendidoException;
+@Entity
+public class Vendedor implements Serializable {
 
-public class Vendedor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    // Atributos
+    @Column(nullable = false, unique = true) // El nombre es obligatorio y único
     private String nombre;
-    private String telefono;
-    private String contrasena;
-    private String correoElectronico;
-    private String ciudad;
-    private String direccion;
-    private Muro muro;
-    private List<Venta> ventas; // Lista de ventas realizadas por el vendedor
-    private List<Producto> productos;
 
-    // Constructor
-    public Vendedor(String nombre, String telefono, String contrasena, String correoElectronico, String ciudad,
-            String direccion, Muro muro) {
+    @Column(nullable = false)
+    private String telefono;
+
+    @Column(nullable = false)
+    private String contrasena;
+
+    @Column(nullable = false, unique = true) // El correo electrónico debe ser único
+    private String correoElectronico;
+
+    @Column(nullable = false)
+    private String ciudad;
+
+    @Column(nullable = false)
+    private String direccion;
+
+    @OneToOne(cascade = CascadeType.ALL) // Relación uno a uno con la entidad Muro
+    @JoinColumn(name = "muro_id", referencedColumnName = "id")
+    private Muro muro;
+
+    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, orphanRemoval = true) // Relación uno a muchos con las ventas
+    private List<Venta> ventas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, orphanRemoval = true) // Relación uno a muchos con los productos
+    private List<Producto> productos = new ArrayList<>();
+
+    @ManyToMany // Relación muchos a muchos con otros vendedores como contactos aliados
+    @JoinTable(
+        name = "contactos_aliados",
+        joinColumns = @JoinColumn(name = "vendedor_id"),
+        inverseJoinColumns = @JoinColumn(name = "aliado_id")
+    )
+    private List<Vendedor> contactosAliados = new ArrayList<>();
+
+    // Constructor vacío requerido por JPA
+    public Vendedor() {}
+
+    // Constructor con parámetros
+    public Vendedor(String nombre, String telefono, String contrasena, String correoElectronico, String ciudad, String direccion, Muro muro) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.contrasena = contrasena;
@@ -31,10 +62,7 @@ public class Vendedor {
         this.ciudad = ciudad;
         this.direccion = direccion;
         this.muro = muro;
-        this.ventas = new ArrayList<>();
-        this.productos = new ArrayList<>();
     }
-
     // Getters y setters
     public String getNombre() {
         return nombre;
@@ -92,6 +120,14 @@ public class Vendedor {
         this.muro = muro;
     }
 
+    public List<Vendedor> getContactosAliados() {
+        return contactosAliados;
+    }
+
+    public void setContactosAliados(List<Vendedor> contactosAliados) {
+        this.contactosAliados = contactosAliados;
+    }
+
     public List<Venta> getVentas() {
         return ventas;
     }
@@ -121,25 +157,14 @@ public class Vendedor {
     }
 
     // Método para registrar la venta de un producto
-    public void registrarVenta(Producto producto, int cantidad) throws ProductoYaVendidoException {
+    public void registrarVenta(Producto producto, int cantidad) {
         // Verifica si el producto pertenece al vendedor
         if (productos.contains(producto)) {
-
-            // Verifica si el producto ya ha sido vendido
-            if (producto.getEstado() == Estado.VENDIDO) {
-                throw new ProductoYaVendidoException("El producto " + producto.getNombre() + " ya ha sido vendido.");
-            }
-
-            // Verifica si el producto tiene suficiente stock
-            if (producto.getUnidadesDisponibles() < cantidad)
-                ;
-            // Registrar la venta
-            producto.registrarVenta(this, cantidad); // Llama al método de registro de venta en la clase Producto
-
+            producto.registrarVenta(this, cantidad);  // Llama al método de registro de venta en la clase Producto
+            
             // Crea la venta y la añade a la lista de ventas del vendedor
             Venta nuevaVenta = new Venta(producto, cantidad, this);
             ventas.add(nuevaVenta);
-
         } else {
             System.out.println("El producto no pertenece al inventario de este vendedor.");
         }
@@ -148,33 +173,44 @@ public class Vendedor {
     // Método para obtener el total de ventas
     public double obtenerTotalVentas() {
         return ventas.stream()
-                .mapToDouble(Venta::getPrecioTotal) // Sumamos el precio total de cada venta
+                .mapToDouble(Venta::getPrecioTotal)  // Sumamos el precio total de cada venta
                 .sum();
     }
 
     // Método para obtener el producto más vendido
     public Producto obtenerProductoMasVendido() {
         return productos.stream()
-                .max(Comparator.comparing(Producto::getUnidadesVendidas)) // Comparamos por las unidades vendidas
-                .orElse(null); // Devolvemos null si no hay productos
+                .max(Comparator.comparing(Producto::getUnidadesVendidas))  // Comparamos por las unidades vendidas
+                .orElse(null);  // Devolvemos null si no hay productos
     }
 
     // Método para obtener el top 10 de productos más vendidos
     public List<Producto> obtenerTop10ProductosMasVendidos() {
         return productos.stream()
-                .sorted(Comparator.comparing(Producto::getUnidadesVendidas).reversed()) // Ordenamos de mayor a menor
-                .limit(10) // Limitar a los 10 primeros
+                .sorted(Comparator.comparing(Producto::getUnidadesVendidas).reversed())  // Ordenamos de mayor a menor
+                .limit(10)  // Limitar a los 10 primeros
                 .collect(Collectors.toList());
     }
 
-    public List<Producto> obtenerTop10ProductosMasLikeados() throws MinimoProductosRequeridosException {
-        if (productos.size() < 10) {
-            throw new MinimoProductosRequeridosException("Se necesitan al menos 10 productos para calcular el top 10.");
+    // Métodos para gestionar contactos aliados
+
+    // Agregar un contacto aliado
+    public void agregarContactoAliado(Vendedor aliado) {
+        if (!contactosAliados.contains(aliado)) {
+            contactosAliados.add(aliado);
+            System.out.println("Contacto aliado agregado: " + aliado.getNombre());
+        } else {
+            System.out.println("El contacto ya es un aliado.");
         }
-        return productos.stream()
-                .sorted(Comparator.comparingInt(Producto::getLikes).reversed())
-                .limit(10)
-                .collect(Collectors.toList());
     }
 
+    // Eliminar un contacto aliado
+    public void deleteContactoAliado(Vendedor aliado) {
+        if (contactosAliados.contains(aliado)) {
+            contactosAliados.remove(aliado);
+            System.out.println("Contacto aliado eliminado: " + aliado.getNombre());
+        } else {
+            System.out.println("El contacto no es un aliado.");
+        }
+    }
 }
