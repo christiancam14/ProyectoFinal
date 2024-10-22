@@ -1,19 +1,44 @@
 package co.edu.uniquindio.ProyectoFinalp3.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Comparator;
+import java.util.stream.Collectors;
+import jakarta.persistence.*;
+import java.io.Serializable;
 
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.EstadoVentaInvalidoException;
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.ProductoSinUnidadesDisponiblesException;
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.VentaNoValidaException;
 
-public class Venta {
+@Entity
+public class Venta implements Serializable{
 
     // Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne // Relación muchos a uno con Producto
+    @JoinColumn(name = "producto_id", nullable = false)
     private Producto producto;
+
+    @Column(nullable = false)
     private int cantidad;
-    private final LocalDateTime fechaVenta;
+
+    @Column(nullable = false)
+    private LocalDateTime fechaVenta;
+
+    @Column(nullable = false)
     private double precioTotal;
+
+    @ManyToOne // Relación muchos a uno con Vendedor
+    @JoinColumn(name = "vendedor_id", nullable = false)
     private Vendedor vendedor;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private EstadoVenta estadoVenta;
 
     // Constructor
