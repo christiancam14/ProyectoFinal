@@ -1,10 +1,6 @@
 package co.edu.uniquindio.ProyectoFinalp3.models;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Comparator;
-import java.util.stream.Collectors;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
@@ -13,7 +9,7 @@ import co.edu.uniquindio.ProyectoFinalp3.exceptions.ProductoSinUnidadesDisponibl
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.VentaNoValidaException;
 
 @Entity
-public class Venta implements Serializable{
+public class Venta implements Serializable {
 
     // Atributos
     @Id

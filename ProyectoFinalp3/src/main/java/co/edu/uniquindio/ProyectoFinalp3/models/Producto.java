@@ -3,24 +3,54 @@ package co.edu.uniquindio.ProyectoFinalp3.models;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.*;
+import java.io.Serializable;
 
-public class Producto {
+public class Producto implements Serializable {
 
     // Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
     private LocalDateTime fechaHoraPublicacion;
+
+    @Column(nullable = false, unique = true) // El nombre es obligatorio y único
     private String nombre;
+
+    @Column(nullable = false)
     private String descripcion;
+
+    @Column(nullable = false)
     private double precio;
+
+    @Column(nullable = false)
     private int unidadesDisponibles;
+
+    @Column(nullable = false)
     private int unidadesVendidas;
+
+    @Column(nullable = false)
     private String imagen;
+
+    @Column(nullable = false)
     private int likes;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Estado estado;
-    private List<Comentario> comentarios;
-    private List<Venta> ventas;  // Lista de ventas realizadas con este producto
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "producto_id")
+    private List<Comentario> comentarios = new ArrayList<>();
+
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Venta> ventas = new ArrayList<>();
 
     // Constructor
-    public Producto(String nombre, String descripcion, double precio, int unidadesDisponibles, String imagen, Estado estado) {
+    public Producto(String nombre, String descripcion, double precio, int unidadesDisponibles, String imagen,
+            Estado estado) {
         this.fechaHoraPublicacion = LocalDateTime.now();
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -28,10 +58,10 @@ public class Producto {
         this.unidadesDisponibles = unidadesDisponibles;
         this.unidadesVendidas = 0; // Inicialmente, no se han vendido unidades
         this.imagen = imagen;
-        this.likes = 0;  // Inicialmente sin likes
+        this.likes = 0; // Inicialmente sin likes
         this.estado = estado;
         this.comentarios = new ArrayList<>();
-        this.ventas = new ArrayList<>();  // Inicialmente no hay ventas
+        this.ventas = new ArrayList<>(); // Inicialmente no hay ventas
     }
 
     // Getters y setters
@@ -130,14 +160,14 @@ public class Producto {
         if (validarDisponibilidad(cantidad)) {
             this.unidadesDisponibles -= cantidad;
             this.unidadesVendidas += cantidad;
-            
+
             // Crear una nueva venta y agregarla a la lista de ventas del producto
             Venta nuevaVenta = new Venta(this, cantidad, vendedor);
             this.ventas.add(nuevaVenta);
-            
+
             // Actualizar el estado si las unidades disponibles llegan a cero
             actualizarEstado();
-            
+
             System.out.println("Venta registrada exitosamente: " + cantidad + " unidades de " + nombre);
         } else {
             System.out.println("No hay suficientes unidades disponibles para realizar la venta.");
@@ -149,7 +179,8 @@ public class Producto {
         return this.unidadesDisponibles >= cantidad;
     }
 
-    // Método para actualizar el estado del producto (por ejemplo, a 'AGOTADO' si no hay más unidades)
+    // Método para actualizar el estado del producto (por ejemplo, a 'AGOTADO' si no
+    // hay más unidades)
     public void actualizarEstado() {
         if (this.unidadesDisponibles == 0) {
             this.estado = Estado.AGOTADO;

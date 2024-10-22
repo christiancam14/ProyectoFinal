@@ -3,12 +3,26 @@ package co.edu.uniquindio.ProyectoFinalp3.models;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import jakarta.persistence.*;
+import java.io.Serializable;
 
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.VendedorNoExistenteException;
 
-public class MarketPlace {
+public class MarketPlace implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true) // El nombre es obligatorio y único
     private String nombre;
-    private List<Vendedor> vendedores;
+
+    @ManyToMany
+    @JoinTable(name = "publicacion_vendedores", // Nombre de la tabla intermedia
+            joinColumns = @JoinColumn(name = "publicacion_id"), // Clave de la tabla actual
+            inverseJoinColumns = @JoinColumn(name = "vendedor_id") // Clave de la tabla "Vendedor"
+    )
+    private List<Vendedor> vendedores = new ArrayList<>();
 
     public MarketPlace(String nombre) {
         this.nombre = nombre;
