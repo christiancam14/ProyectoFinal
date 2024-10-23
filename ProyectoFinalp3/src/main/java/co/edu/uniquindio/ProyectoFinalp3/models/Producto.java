@@ -3,68 +3,60 @@ package co.edu.uniquindio.ProyectoFinalp3.models;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 import jakarta.persistence.*;
-import java.io.Serializable;
 
-public class Producto implements Serializable {
 
-    // Atributos
+
+@Entity
+public class Producto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private LocalDateTime fechaHoraPublicacion;
-
-    @Column(nullable = false, unique = true) // El nombre es obligatorio y único
     private String nombre;
-
-    @Column(nullable = false)
     private String descripcion;
-
-    @Column(nullable = false)
     private double precio;
-
-    @Column(nullable = false)
     private int unidadesDisponibles;
-
-    @Column(nullable = false)
     private int unidadesVendidas;
-
-    @Column(nullable = false)
     private String imagen;
-
-    @Column(nullable = false)
     private int likes;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Estado estado;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "producto_id")
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comentario> comentarios = new ArrayList<>();
 
-    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Venta> ventas = new ArrayList<>();
 
     // Constructor
-    public Producto(String nombre, String descripcion, double precio, int unidadesDisponibles, String imagen,
-            Estado estado) {
+    public Producto(String nombre, String descripcion, double precio, int unidadesDisponibles, String imagen, Estado estado) {
         this.fechaHoraPublicacion = LocalDateTime.now();
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.unidadesDisponibles = unidadesDisponibles;
-        this.unidadesVendidas = 0; // Inicialmente, no se han vendido unidades
+        this.unidadesVendidas = 0;
         this.imagen = imagen;
-        this.likes = 0; // Inicialmente sin likes
+        this.likes = 0;
         this.estado = estado;
         this.comentarios = new ArrayList<>();
-        this.ventas = new ArrayList<>(); // Inicialmente no hay ventas
+        this.ventas = new ArrayList<>();
     }
 
     // Getters y setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public LocalDateTime getFechaHoraPublicacion() {
         return fechaHoraPublicacion;
     }
@@ -145,46 +137,33 @@ public class Producto implements Serializable {
         this.ventas = ventas;
     }
 
-    // Método para incrementar el número de likes
     public void incrementarLikes() {
         this.likes++;
     }
 
-    // Método para agregar un comentario al producto
     public void agregarComentario(Comentario comentario) {
         this.comentarios.add(comentario);
     }
 
-    // Método para registrar una venta
+    public boolean validarDisponibilidad(int cantidad) {
+        return this.unidadesDisponibles >= cantidad;
+    }
+
     public void registrarVenta(Vendedor vendedor, int cantidad) {
         if (validarDisponibilidad(cantidad)) {
             this.unidadesDisponibles -= cantidad;
             this.unidadesVendidas += cantidad;
 
-            // Crear una nueva venta y agregarla a la lista de ventas del producto
             Venta nuevaVenta = new Venta(this, cantidad, vendedor);
             this.ventas.add(nuevaVenta);
 
-            // Actualizar el estado si las unidades disponibles llegan a cero
             actualizarEstado();
-
-            System.out.println("Venta registrada exitosamente: " + cantidad + " unidades de " + nombre);
-        } else {
-            System.out.println("No hay suficientes unidades disponibles para realizar la venta.");
         }
     }
 
-    // Método para validar la disponibilidad de stock
-    public boolean validarDisponibilidad(int cantidad) {
-        return this.unidadesDisponibles >= cantidad;
-    }
-
-    // Método para actualizar el estado del producto (por ejemplo, a 'AGOTADO' si no
-    // hay más unidades)
     public void actualizarEstado() {
         if (this.unidadesDisponibles == 0) {
             this.estado = Estado.AGOTADO;
         }
     }
-
 }

@@ -10,21 +10,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class VendedorServices {
+public class VendedorServiceImpl implements VendedorService {
 
     @Autowired
     private VendedorRepository vendedorRepository;
 
     // Obtener un vendedor por ID
+    @Override
     public Optional<Vendedor> obtenerVendedorPorId(Long id) {
         return vendedorRepository.findById(id);
     }
-    //Crear un vendedor 
+
+    // Crear un vendedor
+    @Override
     public Vendedor crearVendedor(Vendedor vendedor) {
         return vendedorRepository.save(vendedor);
     }
 
     // Publicar un producto en el muro del vendedor
+    @Override
     public String publicarProducto(Long idVendedor, Producto producto) {
         Optional<Vendedor> vendedorOptional = vendedorRepository.findById(idVendedor);
         if (vendedorOptional.isPresent()) {
@@ -38,12 +42,14 @@ public class VendedorServices {
     }
 
     // Obtener los productos de un vendedor
+    @Override
     public List<Producto> obtenerProductosDeVendedor(Long idVendedor) {
         Optional<Vendedor> vendedorOptional = vendedorRepository.findById(idVendedor);
         return vendedorOptional.map(Vendedor::getProductos).orElse(null);
     }
 
     // Agregar un contacto aliado
+    @Override
     public String agregarContactoAliado(Long idVendedor, Vendedor aliado) {
         Optional<Vendedor> vendedorOptional = vendedorRepository.findById(idVendedor);
         if (vendedorOptional.isPresent()) {
@@ -57,6 +63,7 @@ public class VendedorServices {
     }
 
     // Eliminar un contacto aliado
+    @Override
     public String eliminarContactoAliado(Long idVendedor, Vendedor aliado) {
         Optional<Vendedor> vendedorOptional = vendedorRepository.findById(idVendedor);
         if (vendedorOptional.isPresent()) {
@@ -70,6 +77,7 @@ public class VendedorServices {
     }
 
     // Obtener el top 10 productos más vendidos
+    @Override
     public List<Producto> obtenerTop10ProductosMasVendidos(Long idVendedor) {
         Optional<Vendedor> vendedorOptional = vendedorRepository.findById(idVendedor);
         return vendedorOptional.map(Vendedor::obtenerTop10ProductosMasVendidos).orElse(null);
