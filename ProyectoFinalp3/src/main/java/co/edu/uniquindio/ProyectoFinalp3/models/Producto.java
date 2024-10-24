@@ -3,10 +3,7 @@ package co.edu.uniquindio.ProyectoFinalp3.models;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.*;
-
-
 
 @Entity
 public class Producto {
@@ -27,14 +24,22 @@ public class Producto {
     @Enumerated(EnumType.STRING)
     private Estado estado;
 
+    // Relación con Vendedor
+    @ManyToOne
+    @JoinColumn(name = "vendedor_id")
+    private Vendedor vendedor;
+
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comentario> comentarios = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Venta> ventas = new ArrayList<>();
 
+    // Constructor vacío requerido por JPA
+    public Producto() {}
+
     // Constructor
-    public Producto(String nombre, String descripcion, double precio, int unidadesDisponibles, String imagen, Estado estado) {
+    public Producto(String nombre, String descripcion, double precio, int unidadesDisponibles, String imagen, Estado estado, Vendedor vendedor) {
         this.fechaHoraPublicacion = LocalDateTime.now();
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -44,6 +49,7 @@ public class Producto {
         this.imagen = imagen;
         this.likes = 0;
         this.estado = estado;
+        this.vendedor = vendedor;
         this.comentarios = new ArrayList<>();
         this.ventas = new ArrayList<>();
     }
@@ -137,6 +143,15 @@ public class Producto {
         this.ventas = ventas;
     }
 
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    // Métodos
     public void incrementarLikes() {
         this.likes++;
     }

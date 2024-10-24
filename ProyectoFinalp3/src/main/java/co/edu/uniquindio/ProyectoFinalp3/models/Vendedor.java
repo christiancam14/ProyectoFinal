@@ -36,10 +36,10 @@ public class Vendedor implements Serializable {
     @JoinColumn(name = "muro_id", referencedColumnName = "id")
     private Muro muro;
 
-    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, orphanRemoval = true) // Relación uno a muchos con las ventas
+    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true) // Relación uno a muchos con las ventas
     private List<Venta> ventas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, orphanRemoval = true) // Relación uno a muchos con los productos
+    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true) // Relación uno a muchos con los productos
     private List<Producto> productos = new ArrayList<>();
 
     @ManyToMany // Relación muchos a muchos con otros vendedores como contactos aliados

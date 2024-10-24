@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.ComentarioNoPermitidoException;
 
+@Entity  
 public class Muro implements Serializable {
 
     @Id
@@ -29,6 +30,10 @@ public class Muro implements Serializable {
         this.likes = likes;
     }
 
+    // Constructor sin parámetros requerido por JPA
+    public Muro() {}
+
+    // Getters y setters
     public String getMensaje() {
         return mensaje;
     }

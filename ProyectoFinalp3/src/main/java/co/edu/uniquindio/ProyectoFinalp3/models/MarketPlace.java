@@ -7,12 +7,15 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.VendedorNoExistenteException;
-
+@Entity
 public class MarketPlace implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public MarketPlace() {
+    }
 
     @Column(nullable = false, unique = true) // El nombre es obligatorio y único
     private String nombre;

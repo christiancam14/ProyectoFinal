@@ -1,28 +1,39 @@
 package co.edu.uniquindio.ProyectoFinalp3.models;
 
-import java.time.LocalDateTime;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
-class Comentario implements Serializable {
+@Entity
+public class Comentario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private LocalDateTime fechaYhora;
-
-    @Column(nullable = false, length = 1000)
     private String contenido;
 
-    public Comentario(String contenido) {
-        this.fechaYhora = LocalDateTime.now();
+    // Relación con Producto
+    @ManyToOne
+    @JoinColumn(name = "producto_id")
+    private Producto producto;
+
+    // Constructor vacío requerido por JPA
+    public Comentario() {}
+
+    // Constructor con parámetros
+    public Comentario(String contenido, Producto producto) {
         this.contenido = contenido;
+        this.producto = producto;
     }
 
-    public LocalDateTime getFechaYhora() {
-        return fechaYhora;
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getContenido() {
@@ -31,5 +42,13 @@ class Comentario implements Serializable {
 
     public void setContenido(String contenido) {
         this.contenido = contenido;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }

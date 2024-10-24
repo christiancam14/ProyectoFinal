@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.IdAdministradorInvalidoException;
-
+@Entity
 public class Administrador implements Serializable {
 
     @Id
@@ -38,6 +38,9 @@ public class Administrador implements Serializable {
         this.email = email;
         this.contrasena = contrasena;
         this.vendedores = vendedores;
+    }
+
+    public Administrador() {
     }
 
     // Getters y setters

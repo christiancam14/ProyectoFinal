@@ -29,6 +29,8 @@ public class Venta {
     private EstadoVenta estadoVenta;
 
     // Constructor
+    public Venta() {}
+
     public Venta(Producto producto, int cantidad, Vendedor vendedor) {
         this.producto = producto;
         this.cantidad = cantidad;
