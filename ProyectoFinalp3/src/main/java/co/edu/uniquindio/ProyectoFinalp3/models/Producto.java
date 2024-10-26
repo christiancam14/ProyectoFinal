@@ -3,7 +3,10 @@ package co.edu.uniquindio.ProyectoFinalp3.models;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import co.edu.uniquindio.ProyectoFinalp3.util.LocalDateTimeAdapter;
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @Entity
 public class Producto {
@@ -12,7 +15,9 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     private LocalDateTime fechaHoraPublicacion;
+
     private String nombre;
     private String descripcion;
     private double precio;

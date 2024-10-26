@@ -4,7 +4,9 @@ import java.time.LocalDateTime;
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.EstadoVentaInvalidoException;
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.ProductoSinUnidadesDisponiblesException;
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.VentaNoValidaException;
+import co.edu.uniquindio.ProyectoFinalp3.util.LocalDateTimeAdapter;
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @Entity
 public class Venta {
@@ -18,7 +20,10 @@ public class Venta {
     private Producto producto;
 
     private int cantidad;
+
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     private LocalDateTime fechaVenta;
+    
     private double precioTotal;
 
     @ManyToOne
