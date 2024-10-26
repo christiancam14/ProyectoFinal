@@ -1,4 +1,5 @@
-package co.edu.uniquindio.ProyectoFinalp3.models;
+package co.edu.uniquindio.ProyectoFinalp3.util;
+
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.List;

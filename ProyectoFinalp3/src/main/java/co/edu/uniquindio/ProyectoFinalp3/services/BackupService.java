@@ -1,6 +1,6 @@
 package co.edu.uniquindio.ProyectoFinalp3.services;
 
-
+import co.edu.uniquindio.ProyectoFinalp3.util.ListaWrapper;
 import co.edu.uniquindio.ProyectoFinalp3.models.*;
 import co.edu.uniquindio.ProyectoFinalp3.repository.*; 
 import org.springframework.scheduling.annotation.Scheduled;
