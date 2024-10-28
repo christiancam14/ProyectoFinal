@@ -3,7 +3,7 @@ package co.edu.uniquindio.ProyectoFinalp3;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "package co.edu.uniquindio.ProyectoFinalp3")
 public class ProyectoFinalp3Application {
 
 	public static void main(String[] args) {
