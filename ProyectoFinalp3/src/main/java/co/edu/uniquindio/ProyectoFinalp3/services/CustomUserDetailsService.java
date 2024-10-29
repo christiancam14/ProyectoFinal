@@ -20,7 +20,8 @@ import co.edu.uniquindio.ProyectoFinalp3.repository.VendedorRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-@Autowired
+
+    @Autowired
     private AdministradorRepository administradorRepository;
 
     @Autowired
