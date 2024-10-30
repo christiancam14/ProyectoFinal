@@ -1,2 +1,0 @@
-INSERT INTO vendedor (nombre, telefono, contrasena, correoElectronico, ciudad, direccion, muro)
-VALUES ('Usuario Inicial', '3135', '$2a$10$EIXQ1NziEQ8x6vZxvFwPveYkzQKxBmJQ1JZ/0v6MHi4s72B8Yk1qy', 'usuario_inicial@example.com', 'Armenia', 'cra 27b', 'Muro' );

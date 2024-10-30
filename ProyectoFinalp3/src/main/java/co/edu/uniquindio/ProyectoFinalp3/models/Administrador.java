@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 import co.edu.uniquindio.ProyectoFinalp3.exceptions.IdAdministradorInvalidoException;
+
 @Entity
 public class Administrador implements Serializable {
 
