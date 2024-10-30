@@ -1,8 +1,8 @@
 package co.edu.uniquindio.ProyectoFinalp3.models;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -36,19 +36,24 @@ public class Vendedor implements Serializable {
     @JoinColumn(name = "muro_id", referencedColumnName = "id")
     private Muro muro;
 
-    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true) // Relación uno a muchos con las ventas
+    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Venta> ventas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true) // Relación uno a muchos con los productos
+    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Producto> productos = new ArrayList<>();
 
-    @ManyToMany // Relación muchos a muchos con otros vendedores como contactos aliados
+    @ManyToMany
     @JoinTable(
         name = "contactos_aliados",
         joinColumns = @JoinColumn(name = "vendedor_id"),
         inverseJoinColumns = @JoinColumn(name = "aliado_id")
     )
     private List<Vendedor> contactosAliados = new ArrayList<>();
+
+    // Relación con MarketPlace: cada Vendedor pertenece a un único MarketPlace
+    @ManyToOne
+    @JoinColumn(name = "marketplace_id")
+    private MarketPlace marketPlace;
 
     // Constructor vacío requerido por JPA
     public Vendedor() {}
@@ -63,7 +68,8 @@ public class Vendedor implements Serializable {
         this.direccion = direccion;
         this.muro = muro;
     }
-    // Getters y setters
+
+    // Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -120,6 +126,14 @@ public class Vendedor implements Serializable {
         this.muro = muro;
     }
 
+    public MarketPlace getMarketPlace() {
+        return marketPlace;
+    }
+
+    public void setMarketPlace(MarketPlace marketPlace) {
+        this.marketPlace = marketPlace;
+    }
+
     public List<Vendedor> getContactosAliados() {
         return contactosAliados;
     }
@@ -158,11 +172,8 @@ public class Vendedor implements Serializable {
 
     // Método para registrar la venta de un producto
     public void registrarVenta(Producto producto, int cantidad) {
-        // Verifica si el producto pertenece al vendedor
         if (productos.contains(producto)) {
-            producto.registrarVenta(this, cantidad);  // Llama al método de registro de venta en la clase Producto
-            
-            // Crea la venta y la añade a la lista de ventas del vendedor
+            producto.registrarVenta(this, cantidad);
             Venta nuevaVenta = new Venta(producto, cantidad, this);
             ventas.add(nuevaVenta);
         } else {
@@ -173,28 +184,26 @@ public class Vendedor implements Serializable {
     // Método para obtener el total de ventas
     public double obtenerTotalVentas() {
         return ventas.stream()
-                .mapToDouble(Venta::getPrecioTotal)  // Sumamos el precio total de cada venta
+                .mapToDouble(Venta::getPrecioTotal)
                 .sum();
     }
 
     // Método para obtener el producto más vendido
     public Producto obtenerProductoMasVendido() {
         return productos.stream()
-                .max(Comparator.comparing(Producto::getUnidadesVendidas))  // Comparamos por las unidades vendidas
-                .orElse(null);  // Devolvemos null si no hay productos
+                .max(Comparator.comparing(Producto::getUnidadesVendidas))
+                .orElse(null);
     }
 
     // Método para obtener el top 10 de productos más vendidos
     public List<Producto> obtenerTop10ProductosMasVendidos() {
         return productos.stream()
-                .sorted(Comparator.comparing(Producto::getUnidadesVendidas).reversed())  // Ordenamos de mayor a menor
-                .limit(10)  // Limitar a los 10 primeros
+                .sorted(Comparator.comparing(Producto::getUnidadesVendidas).reversed())
+                .limit(10)
                 .collect(Collectors.toList());
     }
 
     // Métodos para gestionar contactos aliados
-
-    // Agregar un contacto aliado
     public void agregarContactoAliado(Vendedor aliado) {
         if (!contactosAliados.contains(aliado)) {
             contactosAliados.add(aliado);
@@ -204,7 +213,6 @@ public class Vendedor implements Serializable {
         }
     }
 
-    // Eliminar un contacto aliado
     public void deleteContactoAliado(Vendedor aliado) {
         if (contactosAliados.contains(aliado)) {
             contactosAliados.remove(aliado);
