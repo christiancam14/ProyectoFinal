@@ -2,8 +2,7 @@ package co.edu.uniquindio.ProyectoFinalp3.services;
 
 import co.edu.uniquindio.ProyectoFinalp3.models.MarketPlace;
 import co.edu.uniquindio.ProyectoFinalp3.models.Vendedor;
-import co.edu.uniquindio.ProyectoFinalp3.repository.MarketPlaceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import co.edu.uniquindio.ProyectoFinalp3.exceptions.VendedorNoExistenteException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,67 +11,40 @@ import java.util.Optional;
 @Service
 public class MarketPlaceServiceImpl implements MarketPlaceService {
 
-    @Autowired
-    private MarketPlaceRepository marketPlaceRepository;
+    private MarketPlace marketPlace;
 
-    @Override
-    public MarketPlace crearMarketPlace(MarketPlace marketPlace) {
-        return marketPlaceRepository.save(marketPlace);
+    public MarketPlaceServiceImpl() {
+        // Inicializar la instancia de MarketPlace con un nombre predeterminado
+        this.marketPlace = MarketPlace.getInstancia("MarketPlace Único");
     }
 
     @Override
-    public Optional<MarketPlace> obtenerMarketPlacePorId(Long id) {
-        return marketPlaceRepository.findById(id);
+    public MarketPlace obtenerInstanciaMarketPlace(String nombre) {
+        return MarketPlace.getInstancia(nombre);
     }
 
     @Override
-    public void registrarVendedor(Long marketPlaceId, String nombre, String contrasena, String ciudad, String telefono, String direccion, String correoElectronico) {
-        Optional<MarketPlace> marketPlaceOptional = marketPlaceRepository.findById(marketPlaceId);
-        if (marketPlaceOptional.isPresent()) {
-            MarketPlace marketPlace = marketPlaceOptional.get();
-            marketPlace.registrar(nombre, contrasena, ciudad, telefono, direccion, correoElectronico);
-            marketPlaceRepository.save(marketPlace); // Guardar el nuevo vendedor en el MarketPlace
-        } else {
-            System.out.println("MarketPlace no encontrado.");
-        }
+    public void registrarVendedor(String nombre, String contrasena, String ciudad, String telefono, String direccion, String correoElectronico) {
+        marketPlace.registrarVendedor(nombre, contrasena, ciudad, telefono, direccion, correoElectronico);
     }
 
     @Override
-    public void loginVendedor(Long marketPlaceId, String nombre, String contrasena) {
-        Optional<MarketPlace> marketPlaceOptional = marketPlaceRepository.findById(marketPlaceId);
-        if (marketPlaceOptional.isPresent()) {
-            MarketPlace marketPlace = marketPlaceOptional.get();
-            marketPlace.login(nombre, contrasena);
-        } else {
-            System.out.println("MarketPlace no encontrado.");
-        }
+    public void loginVendedor(String nombre, String contrasena) throws VendedorNoExistenteException {
+        marketPlace.login(nombre, contrasena);
     }
 
     @Override
-    public Optional<Vendedor> buscarVendedorPorNombre(Long marketPlaceId, String nombre) {
-        Optional<MarketPlace> marketPlaceOptional = marketPlaceRepository.findById(marketPlaceId);
-        if (marketPlaceOptional.isPresent()) {
-            return marketPlaceOptional.get().buscarVendedorPorNombre(nombre);
-        } else {
-            return Optional.empty();
-        }
+    public Optional<Vendedor> buscarVendedorPorNombre(String nombre) {
+        return marketPlace.buscarVendedorPorNombre(nombre);
     }
 
     @Override
-    public void sugerirVendedor(Long marketPlaceId) {
-        Optional<MarketPlace> marketPlaceOptional = marketPlaceRepository.findById(marketPlaceId);
-        if (marketPlaceOptional.isPresent()) {
-            MarketPlace marketPlace = marketPlaceOptional.get();
-            marketPlace.sugerirVendedor();
-        } else {
-            System.out.println("MarketPlace no encontrado.");
-        }
+    public List<Vendedor> obtenerVendedores() {
+        return marketPlace.getVendedores();
     }
 
     @Override
-    public List<Vendedor> obtenerVendedores(Long marketPlaceId) {
-        Optional<MarketPlace> marketPlaceOptional = marketPlaceRepository.findById(marketPlaceId);
-        return marketPlaceOptional.map(MarketPlace::getVendedores).orElse(null);
+    public void sugerirVendedor() {
+        marketPlace.sugerirVendedor();
     }
 }
-
