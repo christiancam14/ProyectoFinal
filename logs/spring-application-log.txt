@@ -220,3 +220,553 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2024-10-24 22:50:11 - Starting ProtocolHandler ["http-nio-8080"]
 2024-10-24 22:50:11 - Tomcat started on port 8080 (http) with context path '/'
 2024-10-24 22:50:11 - Started ProyectoFinalp3Application in 10.612 seconds (process running for 11.356)
+2024-10-28 21:54:33 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 61616 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 21:54:33 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 21:54:35 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 21:54:35 - Finished Spring Data repository scanning in 128 ms. Found 4 JPA repository interfaces.
+2024-10-28 21:54:36 - Tomcat initialized with port 8080 (http)
+2024-10-28 21:54:36 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 21:54:36 - Starting service [Tomcat]
+2024-10-28 21:54:36 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 21:54:36 - Initializing Spring embedded WebApplicationContext
+2024-10-28 21:54:36 - Root WebApplicationContext: initialization completed in 2993 ms
+2024-10-28 21:54:37 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 21:54:37 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 21:54:37 - HHH000026: Second-level cache disabled
+2024-10-28 21:54:37 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 21:54:38 - HikariPool-1 - Starting...
+2024-10-28 21:54:38 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@57f2e67
+2024-10-28 21:54:38 - HikariPool-1 - Start completed.
+2024-10-28 21:54:40 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 21:54:43 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 21:54:43 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 21:54:44 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 21:54:44 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-28 21:54:44 - Started ProyectoFinalp3Application in 12.1 seconds (process running for 12.692)
+2024-10-28 22:03:30 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 31700 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:03:30 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:03:32 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:03:32 - Finished Spring Data repository scanning in 118 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:03:33 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:03:33 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:03:33 - Starting service [Tomcat]
+2024-10-28 22:03:33 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:03:33 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:03:33 - Root WebApplicationContext: initialization completed in 2658 ms
+2024-10-28 22:03:34 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:03:34 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:03:34 - HHH000026: Second-level cache disabled
+2024-10-28 22:03:34 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:03:34 - HikariPool-1 - Starting...
+2024-10-28 22:03:35 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4d2f9e3c
+2024-10-28 22:03:35 - HikariPool-1 - Start completed.
+2024-10-28 22:03:37 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:03:38 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:03:39 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:03:40 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:03:40 - Tomcat started on port 8080 (http) with context path '/'
+2024-10-28 22:03:40 - Started ProyectoFinalp3Application in 10.073 seconds (process running for 10.71)
+2024-10-28 22:12:23 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 55712 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:12:23 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:12:25 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:12:25 - Finished Spring Data repository scanning in 141 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:12:26 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:12:26 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:12:26 - Starting service [Tomcat]
+2024-10-28 22:12:26 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:12:26 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:12:26 - Root WebApplicationContext: initialization completed in 2887 ms
+2024-10-28 22:12:26 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:12:27 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:12:27 - HHH000026: Second-level cache disabled
+2024-10-28 22:12:27 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:12:27 - HikariPool-1 - Starting...
+2024-10-28 22:12:28 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@95cecc5
+2024-10-28 22:12:28 - HikariPool-1 - Start completed.
+2024-10-28 22:12:30 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:12:32 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:12:32 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:12:33 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:12:33 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:12:33 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:12:33 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:12:33 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:12:33 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:12:33 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:16:53 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 43940 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:16:53 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:16:55 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:16:55 - Finished Spring Data repository scanning in 207 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:16:57 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:16:57 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:16:57 - Starting service [Tomcat]
+2024-10-28 22:16:57 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:16:57 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:16:57 - Root WebApplicationContext: initialization completed in 3591 ms
+2024-10-28 22:16:57 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:16:57 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:16:57 - HHH000026: Second-level cache disabled
+2024-10-28 22:16:58 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:16:58 - HikariPool-1 - Starting...
+2024-10-28 22:16:59 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@95cecc5
+2024-10-28 22:16:59 - HikariPool-1 - Start completed.
+2024-10-28 22:17:01 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:17:02 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:17:03 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:17:03 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:17:04 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:17:04 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:17:04 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:17:04 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:17:04 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:17:04 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:17:47 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 63292 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:17:47 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:17:48 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:17:49 - Finished Spring Data repository scanning in 123 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:17:50 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:17:50 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:17:50 - Starting service [Tomcat]
+2024-10-28 22:17:50 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:17:50 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:17:50 - Root WebApplicationContext: initialization completed in 2730 ms
+2024-10-28 22:17:50 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:17:50 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:17:50 - HHH000026: Second-level cache disabled
+2024-10-28 22:17:51 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:17:51 - HikariPool-1 - Starting...
+2024-10-28 22:17:51 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@652b3733
+2024-10-28 22:17:51 - HikariPool-1 - Start completed.
+2024-10-28 22:17:53 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:17:55 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:17:55 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:17:56 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:17:56 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:17:56 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:17:56 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:17:56 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:17:56 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:17:56 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:19:09 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 58656 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:19:09 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:19:11 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:19:11 - Finished Spring Data repository scanning in 119 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:19:12 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:19:12 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:19:12 - Starting service [Tomcat]
+2024-10-28 22:19:12 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:19:12 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:19:12 - Root WebApplicationContext: initialization completed in 2774 ms
+2024-10-28 22:19:12 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:19:12 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:19:12 - HHH000026: Second-level cache disabled
+2024-10-28 22:19:13 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:19:13 - HikariPool-1 - Starting...
+2024-10-28 22:19:13 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@686b1e2d
+2024-10-28 22:19:13 - HikariPool-1 - Start completed.
+2024-10-28 22:19:15 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:19:17 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:19:17 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:19:18 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:19:18 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:19:18 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:19:18 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:19:18 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:19:18 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:19:18 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:20:46 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 38744 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:20:46 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:20:48 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:20:48 - Finished Spring Data repository scanning in 131 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:20:49 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:20:49 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:20:49 - Starting service [Tomcat]
+2024-10-28 22:20:49 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:20:49 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:20:49 - Root WebApplicationContext: initialization completed in 2814 ms
+2024-10-28 22:20:49 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:20:49 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:20:50 - HHH000026: Second-level cache disabled
+2024-10-28 22:20:50 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:20:50 - HikariPool-1 - Starting...
+2024-10-28 22:20:51 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@61993d18
+2024-10-28 22:20:51 - HikariPool-1 - Start completed.
+2024-10-28 22:20:53 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:20:54 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:20:55 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:20:56 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:20:56 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:20:56 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:20:56 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:20:56 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:20:56 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:20:56 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:27:00 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 41440 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:27:00 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:27:02 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:27:02 - Finished Spring Data repository scanning in 126 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:27:03 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:27:03 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:27:03 - Starting service [Tomcat]
+2024-10-28 22:27:03 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:27:03 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:27:03 - Root WebApplicationContext: initialization completed in 2758 ms
+2024-10-28 22:27:03 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:27:04 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:27:04 - HHH000026: Second-level cache disabled
+2024-10-28 22:27:04 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:27:04 - HikariPool-1 - Starting...
+2024-10-28 22:27:05 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@29c244e
+2024-10-28 22:27:05 - HikariPool-1 - Start completed.
+2024-10-28 22:27:07 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:27:08 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:27:09 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:27:10 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:27:10 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:27:10 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:27:10 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:27:10 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:27:10 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:27:10 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:27:50 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 52336 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:27:50 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:27:52 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:27:52 - Finished Spring Data repository scanning in 136 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:27:53 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:27:53 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:27:53 - Starting service [Tomcat]
+2024-10-28 22:27:53 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:27:53 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:27:53 - Root WebApplicationContext: initialization completed in 2925 ms
+2024-10-28 22:27:53 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:27:54 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:27:54 - HHH000026: Second-level cache disabled
+2024-10-28 22:27:54 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:27:54 - HikariPool-1 - Starting...
+2024-10-28 22:27:55 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24fc2c80
+2024-10-28 22:27:55 - HikariPool-1 - Start completed.
+2024-10-28 22:27:57 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:27:58 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:27:59 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:28:00 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:28:00 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:28:00 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:28:00 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:28:00 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:28:00 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:28:00 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:30:02 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 48396 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:30:02 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:30:04 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:30:04 - Finished Spring Data repository scanning in 134 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:30:05 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:30:05 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:30:05 - Starting service [Tomcat]
+2024-10-28 22:30:05 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:30:05 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:30:05 - Root WebApplicationContext: initialization completed in 2584 ms
+2024-10-28 22:30:05 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:30:06 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:30:06 - HHH000026: Second-level cache disabled
+2024-10-28 22:30:06 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:30:06 - HikariPool-1 - Starting...
+2024-10-28 22:30:07 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4d2f9e3c
+2024-10-28 22:30:07 - HikariPool-1 - Start completed.
+2024-10-28 22:30:09 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:30:10 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:30:11 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:30:12 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:30:12 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:30:12 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:30:12 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:30:12 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:30:12 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:30:12 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:34:50 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 62352 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:34:50 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:34:51 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:34:51 - Finished Spring Data repository scanning in 136 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:34:53 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:34:53 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:34:53 - Starting service [Tomcat]
+2024-10-28 22:34:53 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:34:53 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:34:53 - Root WebApplicationContext: initialization completed in 2775 ms
+2024-10-28 22:34:53 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:34:53 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:34:53 - HHH000026: Second-level cache disabled
+2024-10-28 22:34:54 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:34:54 - HikariPool-1 - Starting...
+2024-10-28 22:34:54 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24fc2c80
+2024-10-28 22:34:54 - HikariPool-1 - Start completed.
+2024-10-28 22:34:56 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:34:58 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:34:59 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:35:00 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:35:00 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:35:00 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:35:00 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:35:00 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:35:00 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:35:00 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:38:28 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 63388 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:38:28 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:38:30 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:38:30 - Finished Spring Data repository scanning in 127 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:38:31 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:38:31 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:38:31 - Starting service [Tomcat]
+2024-10-28 22:38:31 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:38:31 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:38:31 - Root WebApplicationContext: initialization completed in 2863 ms
+2024-10-28 22:38:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:38:32 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:38:32 - HHH000026: Second-level cache disabled
+2024-10-28 22:38:32 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:38:33 - HikariPool-1 - Starting...
+2024-10-28 22:38:33 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@646e6d07
+2024-10-28 22:38:33 - HikariPool-1 - Start completed.
+2024-10-28 22:38:35 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:38:36 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:38:37 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:38:38 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:38:38 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:38:38 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:38:38 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:38:38 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:38:38 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:38:38 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:41:20 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 63524 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:41:20 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:41:21 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:41:21 - Finished Spring Data repository scanning in 116 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:41:23 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:41:23 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:41:23 - Starting service [Tomcat]
+2024-10-28 22:41:23 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:41:23 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:41:23 - Root WebApplicationContext: initialization completed in 3106 ms
+2024-10-28 22:41:23 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:41:24 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:41:24 - HHH000026: Second-level cache disabled
+2024-10-28 22:41:24 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:41:24 - HikariPool-1 - Starting...
+2024-10-28 22:41:25 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@603d25db
+2024-10-28 22:41:25 - HikariPool-1 - Start completed.
+2024-10-28 22:41:27 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:41:28 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:41:29 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:41:30 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:41:30 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:41:30 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:41:30 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:41:30 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:41:30 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:41:30 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2024-10-28 22:42:54 - Starting ProyectoFinalp3Application using Java 17.0.8 with PID 16856 (C:\Users\Alejandro Polania\ProyectoFinalp3\ProyectoFinalp3\target\classes started by Alejandro Polania in C:\Users\Alejandro Polania\ProyectoFinalp3)
+2024-10-28 22:42:54 - No active profile set, falling back to 1 default profile: "default"
+2024-10-28 22:42:55 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-28 22:42:55 - Finished Spring Data repository scanning in 122 ms. Found 4 JPA repository interfaces.
+2024-10-28 22:42:56 - Tomcat initialized with port 8080 (http)
+2024-10-28 22:42:56 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:42:56 - Starting service [Tomcat]
+2024-10-28 22:42:56 - Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-28 22:42:56 - Initializing Spring embedded WebApplicationContext
+2024-10-28 22:42:56 - Root WebApplicationContext: initialization completed in 2618 ms
+2024-10-28 22:42:57 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-28 22:42:57 - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-28 22:42:57 - HHH000026: Second-level cache disabled
+2024-10-28 22:42:57 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-28 22:42:58 - HikariPool-1 - Starting...
+2024-10-28 22:42:58 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@57f2e67
+2024-10-28 22:42:58 - HikariPool-1 - Start completed.
+2024-10-28 22:43:00 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-28 22:43:01 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:43:02 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-28 22:43:03 - Starting ProtocolHandler ["http-nio-8080"]
+2024-10-28 22:43:03 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-10-28 22:43:03 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-28 22:43:03 - HikariPool-1 - Shutdown initiated...
+2024-10-28 22:43:03 - HikariPool-1 - Shutdown completed.
+2024-10-28 22:43:03 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-28 22:43:03 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+

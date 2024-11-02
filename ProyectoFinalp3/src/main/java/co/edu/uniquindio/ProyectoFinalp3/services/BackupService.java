@@ -19,7 +19,7 @@ import java.util.List;
 
 @Service
 public class BackupService {
-
+    
     private final AdministradorRepository administradorRepository;
     private final MarketPlaceRepository marketPlaceRepository;
     private final VendedorRepository vendedorRepository;
@@ -47,9 +47,9 @@ public class BackupService {
     }
 
     private void backupEntities() throws Exception {
-        // Definir el directorio de backups
-        String backupDir = "C:/Users/Alejandro Polania/backups/";
-    
+        // Directorio de backups general para cualquier sistema
+        String backupDir = System.getProperty("user.home") + "/backups/";
+        
         // Asegurarse de que el directorio exista
         try {
             Files.createDirectories(Paths.get(backupDir));
@@ -117,9 +117,10 @@ private void serializeToXml(List<?> data, String entityName, String backupDir, S
         }
     }
 
-    // Método para deserializar .xml (restaurar los objetos)
-    public Object deserializeFromXml(String xmlFileName, Class<?> clazz) throws Exception {
-        JAXBContext context = JAXBContext.newInstance(List.class, clazz);
-        return context.createUnmarshaller().unmarshal(Files.newInputStream(Paths.get(xmlFileName)));
+// Método para deserializar .xml (restaurar los objetos)
+    @SuppressWarnings("unchecked")
+    public <T> T deserializeFromXml(String xmlFileName, Class<T> clazz) throws Exception {
+        JAXBContext context = JAXBContext.newInstance(clazz);
+        return (T) context.createUnmarshaller().unmarshal(Files.newInputStream(Paths.get(xmlFileName)));
     }
 }
