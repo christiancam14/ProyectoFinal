@@ -2,12 +2,12 @@ package co.edu.uniquindio.ProyectoFinalp3.models;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import co.edu.uniquindio.ProyectoFinalp3.exceptions.ComentarioNoPermitidoException;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
-import co.edu.uniquindio.ProyectoFinalp3.exceptions.ComentarioNoPermitidoException;
-
-@Entity  
+@Entity
 public class Muro implements Serializable {
 
     @Id
@@ -33,7 +33,7 @@ public class Muro implements Serializable {
     // Constructor sin parámetros requerido por JPA
     public Muro() {}
 
-    // Getters y setters
+    // Getters y métodos específicos
     public String getMensaje() {
         return mensaje;
     }
@@ -46,14 +46,20 @@ public class Muro implements Serializable {
         return likes;
     }
 
-    public void deleteComentario(Comentario comentario) {
-        comentarios.remove(comentario);
+    public void incrementarLikes() {
+        this.likes++;
     }
 
+    // Método para agregar un comentario
     public void agregarComentario(Comentario comentario) throws ComentarioNoPermitidoException {
         if (comentario.getContenido().isEmpty()) {
             throw new ComentarioNoPermitidoException("El comentario no puede estar vacío.");
         }
         comentarios.add(comentario);
+    }
+
+    // Método para eliminar un comentario
+    public void deleteComentario(Comentario comentario) {
+        comentarios.remove(comentario);
     }
 }

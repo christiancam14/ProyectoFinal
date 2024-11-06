@@ -1,25 +1,27 @@
 package co.edu.uniquindio.ProyectoFinalp3.services;
 
-import co.edu.uniquindio.ProyectoFinalp3.models.Producto;
 import co.edu.uniquindio.ProyectoFinalp3.models.Vendedor;
+import co.edu.uniquindio.ProyectoFinalp3.models.Producto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface VendedorService {
 
-    Optional<Vendedor> obtenerVendedorPorId(Long id);
-
     Vendedor crearVendedor(Vendedor vendedor);
 
-    String publicarProducto(Long idVendedor, Producto producto);
+    Optional<Vendedor> obtenerVendedorPorId(Long id);
 
-    List<Producto> obtenerProductosDeVendedor(Long idVendedor);
+    Vendedor actualizarVendedor(Vendedor vendedor);
 
-    String agregarContactoAliado(Long idVendedor, Vendedor aliado);
+    void eliminarVendedor(Long id);
 
-    String eliminarContactoAliado(Long idVendedor, Vendedor aliado);
+    List<Vendedor> listarVendedores();
 
-    List<Producto> obtenerTop10ProductosMasVendidos(Long idVendedor);
+    List<Producto> obtenerProductosDeVendedor(Long vendedorId);
+
+    void agregarContactoAliado(Long vendedorId, Long aliadoId);
+
+    void eliminarContactoAliado(Long vendedorId, Long aliadoId);
 }
 

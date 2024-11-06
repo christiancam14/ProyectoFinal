@@ -10,6 +10,13 @@ import co.edu.uniquindio.ProyectoFinalp3.exceptions.IdAdministradorInvalidoExcep
 @Entity
 public class Administrador implements Serializable {
 
+    public Long getId() {
+        return id;
+    }
+
+    // Atributo estático de la instancia única
+    private static Administrador instancia;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +40,8 @@ public class Administrador implements Serializable {
     )
     private List<Vendedor> vendedores = new ArrayList<>();
 
-    public Administrador(String nombre, String telefono, String email, String contrasena, List<Vendedor> vendedores) {
+    // Constructor privado para el patrón Singleton
+    private Administrador(String nombre, String telefono, String email, String contrasena, List<Vendedor> vendedores) {
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
@@ -41,7 +49,14 @@ public class Administrador implements Serializable {
         this.vendedores = vendedores;
     }
 
-    public Administrador() {
+    public Administrador() {}
+
+    // Método estático para obtener la única instancia de la clase
+    public static Administrador getInstancia(String nombre, String telefono, String email, String contrasena, List<Vendedor> vendedores) {
+        if (instancia == null) {
+            instancia = new Administrador(nombre, telefono, email, contrasena, vendedores);
+        }
+        return instancia;
     }
 
     // Getters y setters
@@ -73,6 +88,10 @@ public class Administrador implements Serializable {
         return contrasena;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
@@ -88,11 +107,8 @@ public class Administrador implements Serializable {
     // Método para obtener estadísticas de los vendedores
     public void obtenerEstadisticas() {
         System.out.println("Estadísticas generales de todos los vendedores:");
-
         vendedores.forEach(vendedor -> {
             System.out.println("Vendedor: " + vendedor.getNombre());
-
-            // Para cada vendedor, generar estadísticas de sus ventas
             vendedor.getVentas().forEach(venta -> {
                 System.out.println(venta.generarEstadisticas());
             });
@@ -105,8 +121,7 @@ public class Administrador implements Serializable {
         }
     }
 
-    // Método para gestionar a los vendedores (como activar, desactivar o
-    // eliminarlos)
+    // Método para gestionar a los vendedores (como activar, desactivar o eliminarlos)
     public void gestionarVendedores(String nombreVendedor, String accion) {
         for (Vendedor vendedor : vendedores) {
             if (vendedor.getNombre().equals(nombreVendedor)) {
@@ -116,11 +131,9 @@ public class Administrador implements Serializable {
                         System.out.println("Vendedor " + nombreVendedor + " eliminado.");
                         break;
                     case "activar":
-                        // Implementar la lógica de activación si es necesario
                         System.out.println("Vendedor " + nombreVendedor + " activado.");
                         break;
                     case "desactivar":
-                        // Implementar la lógica de desactivación si es necesario
                         System.out.println("Vendedor " + nombreVendedor + " desactivado.");
                         break;
                     default:
