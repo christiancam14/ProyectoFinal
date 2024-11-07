@@ -3,7 +3,8 @@ package co.edu.uniquindio.ProyectoFinalp3.models;
 import jakarta.persistence.*;
 import java.util.List;
 
-import javax.management.relation.Role;
+
+import co.edu.uniquindio.ProyectoFinalp3.enums.RoleEnum;
 
 @Entity
 @Table(name = "users")
@@ -25,7 +26,7 @@ public class User {
     private String address;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private RoleEnum role;
 
     @OneToMany(mappedBy = "user")
     private List<Product> products;
@@ -40,7 +41,7 @@ public class User {
     public User() {}
 
     // Constructor con parámetros
-    public User(String username, String password, String firstName, String lastName, String cedula, String address, Role role) {
+    public User(String username, String password, String firstName, String lastName, String cedula, String address, RoleEnum role) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -72,8 +73,8 @@ public class User {
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
 
-    public Role getRole() { return role; }
-    public void setRole(Role role) { this.role = role; }
+    public RoleEnum getRole() { return role; }
+    public void setRole(RoleEnum role) { this.role = role; }
 
     public List<Product> getProducts() { return products; }
     public void setProducts(List<Product> products) { this.products = products; }
