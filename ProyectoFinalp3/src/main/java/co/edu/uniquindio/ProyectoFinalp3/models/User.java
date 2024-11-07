@@ -83,4 +83,8 @@ public class User {
 
     public List<Chat> getChats() { return chats; }
     public void setChats(List<Chat> chats) { this.chats = chats; }
+
+    public String getEmail() {
+        return email;
+    }
 }
