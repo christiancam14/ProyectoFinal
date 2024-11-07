@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+import co.edu.uniquindio.ProyectoFinalp3.enums.ProductStatus;
+
 @Entity
 @Table(name = "products")
 public class Product {
