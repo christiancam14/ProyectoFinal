@@ -44,7 +44,8 @@ public class MarketPlaceServiceImpl implements MarketPlaceService {
     }
 
     @Override
-    public void sugerirVendedor() {
-        marketPlace.sugerirVendedor();
-    }
+    public String sugerirVendedor() {
+    return marketPlace.sugerirVendedor();
+}
+
 }

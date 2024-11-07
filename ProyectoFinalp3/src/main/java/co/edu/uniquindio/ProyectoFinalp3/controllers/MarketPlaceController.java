@@ -18,9 +18,9 @@ public class MarketPlaceController {
     @Autowired
     private MarketPlaceService marketPlaceService;
 
-    // Endpoint para registrar un nuevo vendedor
+    // Endpoint para registrar un nuevo vendedor con mensajes claros
     @PostMapping("/vendedores")
-    public ResponseEntity<String> registrarVendedor(
+    public ResponseEntity<?> registrarVendedor(
             @RequestParam String nombre,
             @RequestParam String contrasena,
             @RequestParam String ciudad,
@@ -28,40 +28,50 @@ public class MarketPlaceController {
             @RequestParam String direccion,
             @RequestParam String correoElectronico) {
 
-        marketPlaceService.registrarVendedor(nombre, contrasena, ciudad, telefono, direccion, correoElectronico);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Vendedor registrado exitosamente");
+        try {
+            marketPlaceService.registrarVendedor(nombre, contrasena, ciudad, telefono, direccion, correoElectronico);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Vendedor registrado exitosamente");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al registrar vendedor: " + e.getMessage());
+        }
     }
 
-    // Endpoint para login de un vendedor
+    // Endpoint para login de un vendedor con manejo de errores
     @PostMapping("/login")
-    public ResponseEntity<String> loginVendedor(@RequestParam String nombre, @RequestParam String contrasena) {
+    public ResponseEntity<?> loginVendedor(@RequestParam String nombre, @RequestParam String contrasena) {
         try {
             marketPlaceService.loginVendedor(nombre, contrasena);
             return ResponseEntity.ok("Login exitoso para el vendedor: " + nombre);
         } catch (VendedorNoExistenteException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error de autenticación: " + e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error inesperado en el login: " + e.getMessage());
         }
     }
-
-    // Endpoint para buscar un vendedor por nombre
+    // Endpoint para buscar un vendedor por nombre con mensajes claros
     @GetMapping("/vendedores/{nombre}")
-    public ResponseEntity<Vendedor> buscarVendedorPorNombre(@PathVariable String nombre) {
-        Optional<Vendedor> vendedor = marketPlaceService.buscarVendedorPorNombre(nombre);
-        return vendedor.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
-    }
-
-    // Endpoint para obtener todos los vendedores
+    public ResponseEntity<?> buscarVendedorPorNombre(@PathVariable String nombre) {
+    Optional<Vendedor> vendedor = marketPlaceService.buscarVendedorPorNombre(nombre);
+    return vendedor
+            .<ResponseEntity<?>>map(ResponseEntity::ok)
+            .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Vendedor con nombre '" + nombre + "' no encontrado."));
+}
+    // Endpoint para obtener todos los vendedores con mensaje claro
     @GetMapping("/vendedores")
-    public ResponseEntity<List<Vendedor>> obtenerVendedores() {
+    public ResponseEntity<?> obtenerVendedores() {
         List<Vendedor> vendedores = marketPlaceService.obtenerVendedores();
+        if (vendedores.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No hay vendedores registrados.");
+        }
         return ResponseEntity.ok(vendedores);
     }
 
-    // Endpoint para sugerir un vendedor
+    // Endpoint para sugerir un vendedor con mensaje claro
     @GetMapping("/sugerencia")
     public ResponseEntity<String> sugerirVendedor() {
-        marketPlaceService.sugerirVendedor();
-        return ResponseEntity.ok("Sugerencia de vendedor mostrada en consola");
-    }
+    String sugerencia = marketPlaceService.sugerirVendedor();
+    return ResponseEntity.ok(sugerencia);
 }
 
+}

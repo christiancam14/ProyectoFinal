@@ -21,5 +21,9 @@ public interface ProductoService {
     List<Producto> obtenerProductosPorVendedor(Long vendedorId);
 
     List<Producto> obtenerProductosPorEstado(Estado estado);
+
+    List<Producto> obtenerTopProductosConMasLikes();
+    
+    List<Producto> obtenerTopProductosMasVendidos();
 }
 

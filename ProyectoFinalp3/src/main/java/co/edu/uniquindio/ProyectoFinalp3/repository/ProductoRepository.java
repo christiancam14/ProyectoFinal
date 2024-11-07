@@ -15,6 +15,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
     // Encuentra productos de un vendedor específico
     List<Producto> findByVendedorId(Long vendedorId);
-
+    List<Producto> findTop10ByOrderByLikesDesc();
+    List<Producto> findTop10ByOrderByUnidadesVendidasDesc();
 }
 

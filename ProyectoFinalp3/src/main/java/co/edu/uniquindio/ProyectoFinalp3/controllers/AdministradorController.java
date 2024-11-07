@@ -14,54 +14,66 @@ public class AdministradorController {
     @Autowired
     private AdministradorService administradorService;
 
-    // Obtener la instancia única del administrador
+    // Obtener la instancia única del administrador con mensaje claro
     @GetMapping
-    public ResponseEntity<Administrador> obtenerAdministrador() {
+    public ResponseEntity<?> obtenerAdministrador() {
         Administrador administrador = administradorService.obtenerAdministrador();
         if (administrador != null) {
             return ResponseEntity.ok(administrador);
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Administrador no encontrado.");
         }
     }
 
-    // Crear o actualizar la instancia única del administrador
+    // Crear o actualizar la instancia única del administrador con mensaje claro
     @PostMapping
-    public ResponseEntity<Administrador> crearOActualizarAdministrador(@RequestBody Administrador administradorDetalles) {
-        Administrador adminGuardado = administradorService.crearOActualizarAdministrador(administradorDetalles);
-        return ResponseEntity.status(HttpStatus.CREATED).body(adminGuardado);
+    public ResponseEntity<?> crearOActualizarAdministrador(@RequestBody Administrador administradorDetalles) {
+        try {
+            Administrador adminGuardado = administradorService.crearOActualizarAdministrador(administradorDetalles);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Administrador creado o actualizado exitosamente.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al crear o actualizar el administrador: " + e.getMessage());
+        }
     }
 
-    // Actualizar la información del administrador
+    // Actualizar la información del administrador con mensaje claro en caso de error
     @PutMapping
-    public ResponseEntity<Administrador> actualizarAdministrador(@RequestBody Administrador administradorDetalles) {
+    public ResponseEntity<?> actualizarAdministrador(@RequestBody Administrador administradorDetalles) {
         Administrador adminActualizado = administradorService.actualizarAdministrador(administradorDetalles);
         if (adminActualizado != null) {
-            return ResponseEntity.ok(adminActualizado);
+            return ResponseEntity.ok("Administrador actualizado exitosamente.");
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Administrador no encontrado para actualizar.");
         }
     }
 
-    // Obtener estadísticas de los vendedores del administrador
+    // Obtener estadísticas de los vendedores con respuesta clara
     @GetMapping("/estadisticas")
-    public ResponseEntity<Void> obtenerEstadisticas() {
+    public ResponseEntity<?> obtenerEstadisticas() {
         Administrador administrador = administradorService.obtenerAdministrador();
         if (administrador != null) {
-            administrador.obtenerEstadisticas();
-            return ResponseEntity.ok().build();
+            try {
+                administrador.obtenerEstadisticas();
+                return ResponseEntity.ok("Estadísticas obtenidas exitosamente.");
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al obtener estadísticas: " + e.getMessage());
+            }
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Administrador no encontrado.");
         }
     }
 
-    // Gestionar vendedores: activar, desactivar o eliminar
+    // Gestionar vendedores: activar, desactivar o eliminar con mensajes claros
     @PostMapping("/gestionar")
-    public ResponseEntity<String> gestionarVendedores(@RequestParam String nombreVendedor, @RequestParam String accion) {
+    public ResponseEntity<?> gestionarVendedores(@RequestParam String nombreVendedor, @RequestParam String accion) {
         Administrador administrador = administradorService.obtenerAdministrador();
         if (administrador != null) {
-            administrador.gestionarVendedores(nombreVendedor, accion);
-            return ResponseEntity.ok("Acción ejecutada sobre el vendedor.");
+            try {
+                administrador.gestionarVendedores(nombreVendedor, accion);
+                return ResponseEntity.ok("Acción '" + accion + "' ejecutada sobre el vendedor '" + nombreVendedor + "'.");
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al ejecutar acción sobre el vendedor: " + e.getMessage());
+            }
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Administrador no encontrado.");
         }

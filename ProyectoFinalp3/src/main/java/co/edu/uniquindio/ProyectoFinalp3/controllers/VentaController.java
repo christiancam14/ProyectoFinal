@@ -22,55 +22,70 @@ public class VentaController {
     @Autowired
     private VentaService ventaService;
 
-    // Crear una nueva venta
+    // Crear una nueva venta con manejo de excepciones
     @PostMapping
-    public ResponseEntity<Venta> crearVenta(@RequestBody Venta venta) {
+    public ResponseEntity<?> crearVenta(@RequestBody Venta venta) {
         try {
             Venta nuevaVenta = ventaService.crearVenta(venta);
             return ResponseEntity.status(HttpStatus.CREATED).body(nuevaVenta);
-        } catch (ProductoSinUnidadesDisponiblesException | VentaNoValidaException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        } catch (ProductoSinUnidadesDisponiblesException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error: Producto sin unidades disponibles.");
+        } catch (VentaNoValidaException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error: Venta no válida. " + e.getMessage());
         }
     }
 
-    // Obtener una venta por su ID
+    // Obtener una venta por su ID con mensaje claro
     @GetMapping("/{id}")
-    public ResponseEntity<Venta> obtenerVentaPorId(@PathVariable Long id) {
-        Optional<Venta> ventaOpt = ventaService.obtenerVentaPorId(id);
-        return ventaOpt.map(ResponseEntity::ok)
-                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-    }
+    public ResponseEntity<?> obtenerVentaPorId(@PathVariable Long id) {
+    Optional<Venta> ventaOpt = ventaService.obtenerVentaPorId(id);
+    return ventaOpt
+            .<ResponseEntity<?>>map(ResponseEntity::ok)
+            .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Venta no encontrada con ID: " + id));
+}
 
-    // Listar todas las ventas
+
+    // Listar todas las ventas con mensaje en caso de lista vacía
     @GetMapping
-    public ResponseEntity<List<Venta>> listarVentas() {
+    public ResponseEntity<?> listarVentas() {
         List<Venta> ventas = ventaService.listarVentas();
+        if (ventas.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No hay ventas registradas.");
+        }
         return ResponseEntity.ok(ventas);
     }
 
-    // Listar ventas por estado
+    // Listar ventas por estado con mensaje claro en caso de lista vacía
     @GetMapping("/estado/{estado}")
-    public ResponseEntity<List<Venta>> listarVentasPorEstado(@PathVariable EstadoVenta estado) {
+    public ResponseEntity<?> listarVentasPorEstado(@PathVariable EstadoVenta estado) {
         List<Venta> ventas = ventaService.listarVentasPorEstado(estado);
+        if (ventas.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontraron ventas con el estado: " + estado);
+        }
         return ResponseEntity.ok(ventas);
     }
 
-    // Actualizar el estado de una venta
+    // Actualizar el estado de una venta con manejo de excepción
     @PutMapping("/{id}/estado")
-    public ResponseEntity<Venta> actualizarEstadoVenta(@PathVariable Long id, @RequestParam EstadoVenta nuevoEstado) {
+    public ResponseEntity<?> actualizarEstadoVenta(@PathVariable Long id, @RequestParam EstadoVenta nuevoEstado) {
         try {
             Venta ventaActualizada = ventaService.actualizarEstadoVenta(id, nuevoEstado);
             return ResponseEntity.ok(ventaActualizada);
         } catch (EstadoVentaInvalidoException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error: Estado de venta inválido. " + e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Venta no encontrada con ID: " + id);
         }
     }
 
-    // Eliminar una venta por su ID
+    // Eliminar una venta por su ID con mensaje claro en caso de error
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarVenta(@PathVariable Long id) {
-        ventaService.eliminarVenta(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    public ResponseEntity<?> eliminarVenta(@PathVariable Long id) {
+        try {
+            ventaService.eliminarVenta(id);
+            return ResponseEntity.ok("Venta eliminada exitosamente.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error al eliminar venta: Venta no encontrada con ID: " + id);
+        }
     }
 }
-

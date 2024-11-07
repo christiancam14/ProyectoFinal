@@ -48,5 +48,15 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public List<Producto> obtenerProductosPorEstado(Estado estado) {
         return productoRepository.findByEstado(estado);
+ 
     }
+    @Override
+    public List<Producto> obtenerTopProductosConMasLikes() {
+    return productoRepository.findTop10ByOrderByLikesDesc();
+}
+
+    @Override
+    public List<Producto> obtenerTopProductosMasVendidos() {
+    return productoRepository.findTop10ByOrderByUnidadesVendidasDesc();
+}
 }

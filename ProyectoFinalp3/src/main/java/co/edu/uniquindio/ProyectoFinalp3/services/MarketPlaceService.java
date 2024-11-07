@@ -19,5 +19,5 @@ public interface MarketPlaceService {
 
     List<Vendedor> obtenerVendedores();
 
-    void sugerirVendedor();
+    String sugerirVendedor();
 }

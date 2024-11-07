@@ -18,19 +18,31 @@ public class VendedorController {
     @Autowired
     private VendedorService vendedorService;
 
+    // Crear un nuevo vendedor con respuesta clara
     @PostMapping
-    public ResponseEntity<Vendedor> crearVendedor(@RequestBody Vendedor vendedor) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(vendedorService.crearVendedor(vendedor));
+    public ResponseEntity<?> crearVendedor(@RequestBody Vendedor vendedor) {
+        try {
+            Vendedor nuevoVendedor = vendedorService.crearVendedor(vendedor);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Vendedor creado exitosamente");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al crear el vendedor: " + e.getMessage());
+        }
     }
 
+    // Obtener un vendedor por ID con manejo de respuesta en caso de no encontrarlo
     @GetMapping("/{id}")
-    public ResponseEntity<Vendedor> obtenerVendedorPorId(@PathVariable Long id) {
+    public ResponseEntity<?> obtenerVendedorPorId(@PathVariable Long id) {
         Optional<Vendedor> vendedor = vendedorService.obtenerVendedorPorId(id);
-        return vendedor.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        if (vendedor.isPresent()) {
+            return ResponseEntity.ok(vendedor.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vendedor no encontrado");
+        }
     }
-
+    
+    // Actualizar un vendedor por ID con respuesta clara en caso de éxito o error
     @PutMapping("/{id}")
-    public ResponseEntity<Vendedor> actualizarVendedor(@PathVariable Long id, @RequestBody Vendedor vendedorDetalles) {
+    public ResponseEntity<?> actualizarVendedor(@PathVariable Long id, @RequestBody Vendedor vendedorDetalles) {
         Optional<Vendedor> vendedorExistente = vendedorService.obtenerVendedorPorId(id);
         if (vendedorExistente.isPresent()) {
             Vendedor vendedorActualizado = vendedorExistente.get();
@@ -41,36 +53,59 @@ public class VendedorController {
             vendedorActualizado.setCiudad(vendedorDetalles.getCiudad());
             vendedorActualizado.setDireccion(vendedorDetalles.getDireccion());
             vendedorActualizado.setMuro(vendedorDetalles.getMuro());
-            return ResponseEntity.ok(vendedorService.actualizarVendedor(vendedorActualizado));
+            vendedorService.actualizarVendedor(vendedorActualizado);
+            return ResponseEntity.ok("Vendedor actualizado exitosamente");
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vendedor no encontrado para actualizar");
     }
 
+    // Eliminar un vendedor por ID con mensaje en caso de no encontrarlo
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarVendedor(@PathVariable Long id) {
-        vendedorService.eliminarVendedor(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> eliminarVendedor(@PathVariable Long id) {
+        try {
+            vendedorService.eliminarVendedor(id);
+            return ResponseEntity.ok("Vendedor eliminado exitosamente");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error al eliminar: Vendedor no encontrado");
+        }
     }
 
+    // Listar todos los vendedores con respuesta exitosa
     @GetMapping
     public ResponseEntity<List<Vendedor>> listarVendedores() {
         return ResponseEntity.ok(vendedorService.listarVendedores());
     }
 
+    // Obtener productos de un vendedor específico
     @GetMapping("/{id}/productos")
-    public ResponseEntity<List<Producto>> obtenerProductosDeVendedor(@PathVariable Long id) {
-        return ResponseEntity.ok(vendedorService.obtenerProductosDeVendedor(id));
+    public ResponseEntity<?> obtenerProductosDeVendedor(@PathVariable Long id) {
+        try {
+            List<Producto> productos = vendedorService.obtenerProductosDeVendedor(id);
+            return ResponseEntity.ok(productos);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error al obtener productos: Vendedor no encontrado");
+        }
     }
 
+    // Agregar contacto aliado con mensajes claros
     @PostMapping("/{id}/contactos/{aliadoId}")
-    public ResponseEntity<Void> agregarContactoAliado(@PathVariable Long id, @PathVariable Long aliadoId) {
-        vendedorService.agregarContactoAliado(id, aliadoId);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> agregarContactoAliado(@PathVariable Long id, @PathVariable Long aliadoId) {
+        try {
+            vendedorService.agregarContactoAliado(id, aliadoId);
+            return ResponseEntity.ok("Contacto aliado agregado exitosamente");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al agregar contacto aliado: " + e.getMessage());
+        }
     }
 
+    // Eliminar contacto aliado con mensajes claros
     @DeleteMapping("/{id}/contactos/{aliadoId}")
-    public ResponseEntity<Void> eliminarContactoAliado(@PathVariable Long id, @PathVariable Long aliadoId) {
-        vendedorService.eliminarContactoAliado(id, aliadoId);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> eliminarContactoAliado(@PathVariable Long id, @PathVariable Long aliadoId) {
+        try {
+            vendedorService.eliminarContactoAliado(id, aliadoId);
+            return ResponseEntity.ok("Contacto aliado eliminado exitosamente");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al eliminar contacto aliado: " + e.getMessage());
+        }
     }
 }

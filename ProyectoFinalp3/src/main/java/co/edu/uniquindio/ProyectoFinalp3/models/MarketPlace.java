@@ -62,14 +62,16 @@ public class MarketPlace implements Serializable {
     }
 
     // Método para sugerir un vendedor 
-    public void sugerirVendedor() {
-        if (!vendedores.isEmpty()) {
-            Vendedor vendedorSugerido = vendedores.get(0);
-            System.out.println("Sugerencia de vendedor: " + vendedorSugerido.getNombre());
-        } else {
-            System.out.println("No hay vendedores registrados para sugerir.");
-        }
+    // Método para sugerir un vendedor
+    public String sugerirVendedor() {
+    if (!vendedores.isEmpty()) {
+        Vendedor vendedorSugerido = vendedores.get(0);
+        return "Sugerencia de vendedor: " + vendedorSugerido.getNombre();
+    } else {
+        return "No hay vendedores registrados para sugerir.";
     }
+}
+
 
     // Getters y setters
     public String getNombre() {
