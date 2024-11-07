@@ -1,4 +1,4 @@
-package co.edu.uniquindio.ProyectoFinalp3.Config;
+package co.edu.uniquindio.ProyectoFinalp3.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package co.edu.uniquindio.ProyectoFinalp3.Config;
+package co.edu.uniquindio.ProyectoFinalp3.config;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
