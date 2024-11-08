@@ -1,0 +1,20 @@
+<configuration>
+    <!-- Define el patrón de logging para mayor legibilidad -->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <!-- Console Appender para mostrar los logs en la consola -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Nivel de logging (INFO, DEBUG, ERROR) -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <!-- Ejemplo de configuración específica por paquete -->
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="com.myapp" level="DEBUG"/> <!-- Ajusta al paquete de tu aplicación -->
+</configuration>
